@@ -1,4 +1,12 @@
 "use strict";
-const sum = (a, b) => a + b;
-setInterval(() => console.log(sum(2, 3)), 1000);
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const http_1 = __importDefault(require("http"));
+const express_1 = __importDefault(require("express"));
+const router = express_1.default();
+const { PORT = 3000 } = process.env;
+const server = http_1.default.createServer(router);
+server.listen(PORT, () => console.log(`Server is running on ${PORT}`));
 //# sourceMappingURL=server.js.map

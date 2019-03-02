@@ -1,3 +1,13 @@
-const sum = (a: number, b: number) => a + b;
+import http from "http";
+import express from "express";
+import middleware from "./middleware";
+import { applyMiddleware } from "./utils";
 
-setInterval(() => console.log(sum(2, 3)), 1000);
+const router = express();
+applyMiddleware(middleware, router);
+
+const { PORT = 3000 } = process.env;
+
+const server = http.createServer(router);
+
+server.listen(PORT, () => console.log(`Server is running on ${PORT}`));
