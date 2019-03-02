@@ -1,10 +1,14 @@
 import http from "http";
 import express from "express";
 import middleware from "./middleware";
-import { applyMiddleware } from "./utils";
+import routes from "./services";
+import { applyMiddleware, applyRoutes } from "./utils";
 
 const router = express();
+
 applyMiddleware(middleware, router);
+
+applyRoutes(routes, router);
 
 const { PORT = 3000 } = process.env;
 
