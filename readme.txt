@@ -1,0 +1,1 @@
+TypeScript Config: npx tsc --init --moduleResolution node --resolveJsonModule --target es6 --noImplicitAny --sourceMap --lib dom,es2017 --outDir dist

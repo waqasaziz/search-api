@@ -1,0 +1,16 @@
+{
+  "name": "search-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc-watch --onSuccess \"node ./dist/server.js\""
+  },
+  "keywords": [],
+  "author": "Waqas Aziz <waqas_aziz@ymail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "tsc-watch": "^2.1.2",
+    "typescript": "^3.3.3333"
+  }
+}
