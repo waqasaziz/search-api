@@ -1,4 +1,7 @@
 import * as Sequelize from "sequelize";
+import { CommentAttributes, CommentInstance } from "models/Comment";
+import { PostAttributes, PostInstance } from "models/Post";
+import { SequelizeAttributes } from "typings/SequelizeAttributes";
 
 export interface UserAttributes {
   id?: number;
@@ -9,10 +12,22 @@ export interface UserAttributes {
 
 export interface UserInstance
   extends Sequelize.Instance<UserAttributes>,
-    UserAttributes {
-  // At the moment, there's nothing more to add apart
-  // from the methods and attributes that the types
-  // `Sequelize.Instance<UserAttributes>` and
-  // `UserAttributes` give us. We'll add more here when
-  //  we get on to adding associations.
-}
+    UserAttributes {}
+
+export const UserFactory = (
+  sequelize: Sequelize.Sequelize,
+  DataTypes: Sequelize.DataTypes
+): Sequelize.Model<UserInstance, UserAttributes> => {
+  const attributes: SequelizeAttributes<UserAttributes> = {
+    name: {
+      type: DataTypes.STRING
+    }
+  };
+
+  const User = sequelize.define<UserInstance, UserAttributes>(
+    "User",
+    attributes
+  );
+
+  return User;
+};
