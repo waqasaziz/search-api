@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { HTTP400Error, HTTP404Error } from "../utils/httpErrors";
+import { DbInterface } from "typings/DbInterface";
 
 export const checkSearchParams = (
   req: Request,

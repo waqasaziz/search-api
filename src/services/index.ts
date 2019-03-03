@@ -1,3 +1,4 @@
-import searchRouters from "./search/routes";
+import searchRoutes from "./search/routes";
+import userRoutes from "./user/routes";
 
-export default [...searchRouters];
+export default [...searchRoutes];

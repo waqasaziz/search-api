@@ -7,16 +7,18 @@ const http_1 = __importDefault(require("http"));
 const express_1 = __importDefault(require("express"));
 const utils_1 = require("./utils");
 const middleware_1 = __importDefault(require("./middleware"));
+const database_1 = require("./middleware/database");
 const errorHandlers_1 = __importDefault(require("./middleware/errorHandlers"));
 const services_1 = __importDefault(require("./services"));
-process.on("uncaughtException", e => {
+process.on("uncaughtException", (e) => {
     console.log(e);
     process.exit(1);
 });
-process.on("unhandledRejection", e => {
+process.on("unhandledRejection", (e) => {
     console.log(e);
     process.exit(1);
 });
+database_1.initDB();
 const router = express_1.default();
 utils_1.applyMiddleware(middleware_1.default, router);
 utils_1.applyRoutes(services_1.default, router);

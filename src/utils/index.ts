@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
+import { DbInterface } from "typings/DbInterface";
 type Wrapper = (router: Router) => void;
 
 export const applyMiddleware = (middleware: Wrapper[], router: Router) => {
