@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const SearchController_1 = require("./SearchController");
 const checks_1 = require("../../middleware/checks");
-const database_1 = require("../../middleware/database");
 exports.default = [
     {
         path: "/api/v1/search",
@@ -18,8 +17,6 @@ exports.default = [
         handler: [
             checks_1.checkSearchParams,
             ({ query }, res) => __awaiter(this, void 0, void 0, function* () {
-                const db = database_1.getDB();
-                console.log("--- db ---- ", yield db.User.findAll({}));
                 const result = yield SearchController_1.getPlacesByName(query.q);
                 res.status(200).send(result);
             })

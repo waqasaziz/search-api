@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import * as controller from "./userController";
+import * as controller from "./postController";
 
 export default [
   {
-    path: "/api/v1/users",
+    path: "/api/v1/posts",
     method: "get",
     handler: [
       async (req: Request, res: Response) => {
