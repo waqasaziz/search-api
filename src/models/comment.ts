@@ -29,5 +29,14 @@ export const CommentFactory = (
     attributes
   );
 
+  Comment.associate = models => {
+    Comment.belongsTo(models.Post);
+    Comment.belongsTo(models.User, { as: "author", foreignKey: "AuthorId" });
+    Comment.belongsToMany(models.User, {
+      through: "PostUpVotes",
+      as: "upvoters"
+    });
+  };
+
   return Comment;
 };

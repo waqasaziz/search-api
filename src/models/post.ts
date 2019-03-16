@@ -41,5 +41,10 @@ export const PostFactory = (
     attributes
   );
 
+  Post.associate = models => {
+    Post.hasMany(models.Comment);
+    Post.belongsTo(models.User, { as: "author", foreignKey: "AuthorId" });
+  };
+
   return Post;
 };

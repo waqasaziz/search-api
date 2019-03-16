@@ -6,6 +6,5 @@ export const findAll = async (): Promise<UserInstance[]> => {
   const db = getDB();
 
   const users = await db.User.findAll({});
-
   return users;
 };

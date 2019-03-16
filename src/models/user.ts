@@ -2,6 +2,7 @@ import * as Sequelize from "sequelize";
 import { CommentAttributes, CommentInstance } from "models/Comment";
 import { PostAttributes, PostInstance } from "models/Post";
 import { SequelizeAttributes } from "typings/SequelizeAttributes";
+import { userInfo } from "os";
 
 export interface UserAttributes {
   id?: number;
@@ -28,6 +29,15 @@ export const UserFactory = (
     "User",
     attributes
   );
+
+  User.associate = models => {
+    User.hasMany(models.Comment);
+    User.hasMany(models.Post);
+    User.belongsToMany(models.Comment, {
+      through: "PostUpVotes",
+      as: "upVotedComments"
+    });
+  };
 
   return User;
 };
